@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/FootballStatistic/static/css/main.8f3eb9e1.chunk.css",
+    "main.js": "/FootballStatistic/static/js/main.c765ac5f.chunk.js",
+    "main.js.map": "/FootballStatistic/static/js/main.c765ac5f.chunk.js.map",
+    "runtime-main.js": "/FootballStatistic/static/js/runtime-main.450fcee4.js",
+    "runtime-main.js.map": "/FootballStatistic/static/js/runtime-main.450fcee4.js.map",
+    "static/js/2.dc256ab3.chunk.js": "/FootballStatistic/static/js/2.dc256ab3.chunk.js",
+    "static/js/2.dc256ab3.chunk.js.map": "/FootballStatistic/static/js/2.dc256ab3.chunk.js.map",
+    "static/js/3.b1f8af76.chunk.js": "/FootballStatistic/static/js/3.b1f8af76.chunk.js",
+    "static/js/3.b1f8af76.chunk.js.map": "/FootballStatistic/static/js/3.b1f8af76.chunk.js.map",
+    "index.html": "/FootballStatistic/index.html",
+    "static/css/main.8f3eb9e1.chunk.css.map": "/FootballStatistic/static/css/main.8f3eb9e1.chunk.css.map",
+    "static/js/2.dc256ab3.chunk.js.LICENSE.txt": "/FootballStatistic/static/js/2.dc256ab3.chunk.js.LICENSE.txt",
+    "static/media/Spinner-1.5s-224px.273a4faa.svg": "/FootballStatistic/static/media/Spinner-1.5s-224px.273a4faa.svg",
+    "static/media/App.css": "/FootballStatistic/static/media/Stadion.cb077c21.jpg",
+    "static/media/football1.ecfe5f29.jpg": "/FootballStatistic/static/media/football1.ecfe5f29.jpg",
+    "static/media/football2.050e4f99.jpg": "/FootballStatistic/static/media/football2.050e4f99.jpg",
+    "static/media/football3.4c671211.jpg": "/FootballStatistic/static/media/football3.4c671211.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.450fcee4.js",
+    "static/js/2.dc256ab3.chunk.js",
+    "static/css/main.8f3eb9e1.chunk.css",
+    "static/js/main.c765ac5f.chunk.js"
+  ]
+}
