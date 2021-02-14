@@ -3,9 +3,11 @@ import * as axios from "axios";
 const instance = axios.create({
   withCredentials: true,
   headers: {
-    "X-Auth-Token": "6047b22b2da048618b4f8b293369e44c",
+    "X-Auth-Token": process.env.REACT_APP_AUTH_TOKEN,
   },
 });
+
+// "6047b22b2da048618b4f8b293369e44c"
 
 export const FootballApi = {
   //LEAGUE
