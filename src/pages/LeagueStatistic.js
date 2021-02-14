@@ -7,7 +7,7 @@ import { getLeagues } from "../Redux/leagueReducer";
 import Preloader from "../component/Preloader";
 
 const LeagueStatistic = () => {
-  const leagues = useSelector((state) => state.leaguePage.leagues);
+  const leagues = useSelector(getAllLeagues);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLeagues());

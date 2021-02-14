@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { getAllTeams } from "../Redux/selectors";
-import { getTeams } from "../Redux/teamReducer";
+import { getTeams, updateTeams } from "../Redux/teamReducer";
 
 const TeamStatistic = () => {
-  const teams = useSelector(state => state.teamPage.teams);
+  const teams = useSelector(getAllTeams);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,15 +20,7 @@ const TeamStatistic = () => {
         <h2>Информация</h2>
         <div className="description">
           <div className="desc-left">
-            <h3>Rebuilding the society</h3>
-            <p>
-              Burning Man is a network of people inspired by the values
-              reflected in the Ten Principles and united in the pursuit of a
-              more creative and connected existence in the world. Throughout the
-              year we work to build Black Rock City, home of the largest annual
-              Burning Man gathering, and nurture the distinctive culture
-              emerging from that experience.
-            </p>
+            <FormDate teams={teams} dispatch={dispatch} />
           </div>
           <div className="desc-right">
             <h3>Статистика команды</h3>
@@ -38,7 +30,7 @@ const TeamStatistic = () => {
                   <tr>
                     <th>Лига</th>
                     <th>Страна</th>
-                    <th>Год</th>
+                    <th>Основана</th>
                     <th>Выбор</th>
                   </tr>
                 </thead>
@@ -48,6 +40,7 @@ const TeamStatistic = () => {
                       <tr key={team.id}>
                         <td>{team.name}</td>
                         <td>{team.area.name}</td>
+                        <td>{team.founded}</td>
                         <td>
                           <Link to={"/teamPage/" + team.id}>Выбор</Link>
                         </td>
@@ -60,6 +53,38 @@ const TeamStatistic = () => {
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const FormDate = ({ teams, dispatch }) => {
+  const [inputFrom1, setInputFrom1] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateTeams(inputFrom1))
+  };
+
+
+
+  return (
+    <div className="desc-left">
+      <h3>Фильтры</h3>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input
+            input
+            type="number"
+            min="1800"
+            max="2021"
+            step="1"
+            placeholder="2020"
+            value={inputFrom1}
+            onChange={(e) => setInputFrom1(e.target.value)}
+          />
+        </label>
+        <input type="submit" value="Отправить"></input>
+      </form>
     </div>
   );
 };

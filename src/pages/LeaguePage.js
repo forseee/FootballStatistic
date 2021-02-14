@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import "../App.css";
 import { getOneLeagueInfo, getOneLeagueInfoDateToDate } from "../Redux/leagueReducer";
-import {getAllLeagues} from '../Redux/selectors'
+import {getOneLeague} from '../Redux/selectors'
 
 const TeamPage = () => {
-  const league = useSelector(getAllLeagues);
+  const league = useSelector(getOneLeague);
   const { leagueId } = useParams();
   const dispatch = useDispatch();
 
@@ -37,8 +37,8 @@ const FormTeamPage = ({ id, dispatch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let dateFrom = e.target[0].defaultValue;
-    let dateTo = e.target[1].defaultValue;
+    let dateFrom = inputFrom1;
+    let dateTo = inputFrom2;
     dispatch(getOneLeagueInfoDateToDate(id, dateFrom, dateTo));
   };
 

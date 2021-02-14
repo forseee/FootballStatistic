@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import "../App.css";
 import { getOneTeamInfo, getOneTeamInfoDateToDate } from "../Redux/teamReducer";
-import {getAllTeams} from '../Redux/selectors'
+import { getOneTeam } from "../Redux/selectors";
+import qs from "qs";
 
 const TeamPage = () => {
-  const team = useSelector(getAllTeams);
+  const team = useSelector(getOneTeam);
   const { teamId } = useParams();
   const dispatch = useDispatch();
 
@@ -28,18 +29,27 @@ const TeamPage = () => {
   );
 };
 
-
-//Можно перенести в отдельную папку компаненты , но решить оставить здесь  
+//Можно перенести в отдельную папку компаненты , но решить оставить здесь
 
 const FormTeamPage = ({ id, dispatch }) => {
   const [inputFrom1, setInputFrom1] = useState("");
   const [inputFrom2, setInputFrom2] = useState("");
+  const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    const dateFrom = new URLSearchParams(location.search).get("dateFrom");
+    const dateTo = new URLSearchParams(location.search).get("dateTo");
+    setInputFrom1(dateFrom)
+    setInputFrom2(dateTo)
+    dispatch(getOneTeamInfoDateToDate(id, dateFrom, dateTo));
+  }, [location]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let dateFrom = e.target[0].defaultValue;
-    let dateTo = e.target[1].defaultValue;
-    dispatch(getOneTeamInfoDateToDate(id, dateFrom, dateTo));
+    let dateFrom = inputFrom1;
+    let dateTo = inputFrom2;
+    history.push(`${id}?dateFrom=${dateFrom}&dateTo=${dateTo}`);
   };
 
   return (
@@ -66,7 +76,7 @@ const FormTeamPage = ({ id, dispatch }) => {
   );
 };
 
-const TableTeamPage = ({team}) => {
+const TableTeamPage = ({ team }) => {
   return (
     <div className="desc-right">
       <h3>Календарь команды</h3>

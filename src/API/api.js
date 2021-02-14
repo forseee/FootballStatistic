@@ -12,14 +12,14 @@ const instance = axios.create({
 export const FootballApi = {
   //LEAGUE
   getLeagues() {
-    return instance.get("/api/competitions").then((response) => {
+    return instance.get(`${process.env.REACT_APP_API_URL}/competitions`).then((response) => {
       return response.data.competitions;
     });
   },
 
   getCalendarOfLeague(id) {
     debugger
-    return instance.get(`/api/competitions/${id}/matches`).then((response) => {
+    return instance.get(`${process.env.REACT_APP_API_URL}/competitions/${id}/matches`).then((response) => {
       
       return response.data.matches;
     });
@@ -27,7 +27,7 @@ export const FootballApi = {
 
   getCalendarOfLeagueDate(id, dateFrom, dateTo) {
     return instance
-      .get(`/api/competitions/${id}/matches/`, {
+      .get(`${process.env.REACT_APP_API_URL}/competitions/${id}/matches/`, {
         params: {
           dateFrom: dateFrom,
           dateTo: dateTo,
@@ -40,20 +40,20 @@ export const FootballApi = {
 
   //TEAM
   getTeams() {
-    return instance.get("/api/teams").then((response) => {
+    return instance.get(`${process.env.REACT_APP_API_URL}/teams`).then((response) => {
       return response.data.teams;
     });
   },
 
   getCalendarOfTeam(id) {
-    return instance.get(`/api/teams/${id}/matches`).then((response) => {
+    return instance.get(`${process.env.REACT_APP_API_URL}/teams/${id}/matches`).then((response) => {
       return response.data.matches;
     });
   },
 
   getCalendarOfTeamDate(id, dateFrom, dateTo) {
     return instance
-      .get(`/api/teams/${id}/matches/`, {
+      .get(`${process.env.REACT_APP_API_URL}/teams/${id}/matches/`, {
         params: {
           dateFrom: dateFrom,
           dateTo: dateTo,
